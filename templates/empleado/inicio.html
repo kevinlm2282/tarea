@@ -1,0 +1,51 @@
+
+    {% include 'header.html' %}
+    
+    <br/>
+    <a href="{{url_for('create')}}" class="btn btn-success">
+        ingresar nuevo Empleado 
+    </a>
+    <br>
+    <br>
+
+    
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+                <th>Usuario</th>
+                <th>Password</th>
+                <th>Admin</th>
+                <th>Acciones</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for empleados in empleados %}
+            <tr>
+                <td>{{empleados[0]}}</td>
+                <td>{{empleados[1]}}</td>
+                <td>{{empleados[2]}}</td>
+                <td>{{empleados[3]}}</td>
+                <td>{{empleados[4]}}</td>
+                <td>{{empleados[5]}}</td>
+                <td>{{empleados[6]}}</td>
+                <td>{{empleados[7]}}</td>
+                <td> 
+                    <a class="btn btn-warning" href="/edith/{{empleados[0]}}">Editar</a> | 
+                    <a onclick="return confirm('Esta seguro de borrar?')" class="btn btn-danger" href="/destroy/{{empleados[0]}}">Eliminar</a>
+                     
+                </td>
+                
+            </tr>
+            {% endfor %}
+            
+
+        </tbody>
+    </table>
+
+    {% include 'footer.html' %}

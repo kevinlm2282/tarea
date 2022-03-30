@@ -1,0 +1,39 @@
+{% if session['admin'] == 1 %}
+    {% include 'header.html' %}
+{% else %}    
+    {% include 'headerEmp.html' %}
+{%  endif %}
+    
+
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>CI Cliente</th>
+                <th>Total</th>
+                <th>Usuario</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for ventas in ventas %}
+            <tr>
+                <td>{{ventas[0]}}</td>
+                <td>{{ventas[1]}}</td>
+                <td>{{ventas[2]}}</td>
+                <td>{{ventas[3]}}</td>
+                <td>{{ventas[4]}}</td>
+                <td>{{ventas[5]}}</td>
+                
+                
+                
+            </tr>
+            {% endfor %}
+            
+
+        </tbody>
+    </table>
+
+    {% include 'footer.html' %}

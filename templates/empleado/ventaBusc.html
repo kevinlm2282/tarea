@@ -1,0 +1,59 @@
+{% if session['admin'] == 1 %}
+    {% include 'header.html' %}
+{% else %}    
+    {% include 'headerEmp.html' %}
+{%  endif %}
+
+{% with messages= get_flashed_messages() %}
+
+{% if messages %}
+
+    <div class="alert alert-danger" role="alert">
+        {% for message in messages  %}
+            {{message}}
+        {% endfor%}
+    </div>
+{%  endif %}
+
+{% endwith%}
+<form method="post" action="/venta" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            Buscar Producto
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Datos Producto</h5>
+            <p class="card-text">
+
+                <div class="form-group">
+                    <label for="txtid">id del producto</label>
+                    <input id="txtid"  class="form-control" type="text" name="txtid">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtidCli">Ci  del cliente</label>
+                    <input id="txtidCli"  class="form-control" type="text" name="txtidCli">
+                </div>
+
+                <br>
+                
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="vender">
+                    <a href="{{url_for('producto')}}" class="btn btn-primary"> Regresar</a>
+                </div>
+                
+
+
+                
+                
+
+
+            </p>
+        </div>
+    </div>
+
+    
+</form>
+
+{% include 'footer.html' %}

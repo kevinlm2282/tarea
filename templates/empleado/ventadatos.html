@@ -1,0 +1,95 @@
+{% include 'header.html' %}
+{% for datos in data %}
+{% for cliente in cli %}
+
+{% with messages= get_flashed_messages() %}
+
+{% if messages %}
+
+    <div class="alert alert-danger" role="alert">
+        {% for message in messages  %}
+            {{message}}
+        {% endfor%}
+    </div>
+{%  endif %}
+
+{% endwith%}
+
+
+<br><br>
+<form method="post" action="/updateSale" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            Vender Producto
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Datos Producto</h5>
+            <p class="card-text">
+
+                <div class="form-group">
+                    <label for="txtID">ID del producto</label>
+                    <input id="txtID" value="{{datos[0]}}" class="form-control" type="text" name="txtID">
+                </div>
+                <div class="form-group">
+                    <label for="txtNombre">Nombre del producto</label>
+                    <input id="txtNombre" value="{{datos[1]}}" class="form-control" type="text" name="txtNombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtMarca">Marca</label>
+                    <input id="txtMarca" value="{{datos[2]}}" class="form-control" type="text" name="txtMarca">
+                </div>
+                
+                <div class="form-group">
+                    <label for="txtforma">Forma farmaceutica</label>
+                    <input id="txtforma" value="{{datos[3]}}" class="form-control" type="text" name="txtforma">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtCon">Concentracion</label>
+                    <input id="txtCon" value="{{datos[4]}}"  class="form-control" type="text" name="txtCon">
+                </div>
+                <div class="form-group">
+                    <label for="txtCantidad ">Cantidad</label>
+                    <input id="txtCantidad"   class="form-control" type="text" name="txtCantidad">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtCI">CI</label>
+                    <input id="txtCI" value="{{cliente[0]}}"  class="form-control" type="text" name="txtCI">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtNom">Nombre</label>
+                    <input id="txtNom" value="{{cliente[1]}}"  class="form-control" type="text" name="txtNom">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtAp">Apellido</label>
+                    <input id="txtAp" value="{{cliente[2]}}"  class="form-control" type="text" name="txtAp">
+                </div>
+
+
+                <br>
+                
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="vender">
+                    <a href="{{url_for('producto')}}" class="btn btn-primary"> Regresar</a>
+                </div>
+                
+
+
+                
+                
+
+
+            </p>
+        </div>
+    </div>
+
+    
+</form>
+{% endfor %}
+{% endfor %}
+{% include 'footer.html' %}

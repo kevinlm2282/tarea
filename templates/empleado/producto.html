@@ -1,0 +1,73 @@
+{% if session['admin'] == 1 %}
+    {% include 'header.html' %}
+{% else %}    
+    {% include 'headerEmp.html' %}
+{%  endif %}
+    
+
+    <style  type="text/css">
+        .espacios{
+  white-space: nowrap;
+}
+    </style>
+    
+    <br/>
+    <a href="{{url_for('createProduct')}}" class="btn btn-success">
+        ingresar nuevo Producto 
+    </a>
+    <br>
+    <br>
+
+    <div class="table-responsive">
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Nombre Producto</th>
+                <th>Marca</th>
+                <th>Precio de venta</th>
+                <th>Precio de compra</th>
+                <th>stock</th>
+                <th>Fecha de vencimiento</th>
+                <th>Concentracion</th>
+                <th>Forma farmaceutica</th>
+                <th>Receta</th>
+                {% if session['admin'] == 1 %}
+                    <th class="espacios">Acciones</th>
+                {% else %}    
+                    
+                {%  endif %}
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in producto %}
+            <tr>
+                <td>{{producto[0]}}</td>
+                <td>{{producto[5]}}</td>
+                <td>{{producto[4]}}</td>
+                <td>{{producto[6]}}</td>
+                <td>{{producto[7]}}</td>
+                <td>{{producto[9]}}</td>
+                <td>{{producto[2]}}</td>
+                <td>{{producto[1]}}</td>
+                <td>{{producto[3]}}</td>
+                <td>{{producto[8]}}</td>
+                {% if session['admin'] == 1 %}
+                <td class="espacios"> 
+                    <a class="btn btn-warning" href="/edithProduct/{{producto[0]}}">Editar</a> | 
+                    <a onclick="return confirm('Esta seguro de borrar?')" class="btn btn-danger" href="/destroyProduct/{{producto[0]}}">Eliminar</a>
+                     
+                </td>
+                {% else %}    
+                    
+                {%  endif %}
+                
+            </tr>
+            {% endfor %}
+            
+
+        </tbody>
+    </table>
+</div>
+    {% include 'footer.html' %}

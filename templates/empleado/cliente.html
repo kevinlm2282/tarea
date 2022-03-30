@@ -1,0 +1,45 @@
+{% if session['admin'] == 1 %}
+    {% include 'header.html' %}
+{% else %}    
+    {% include 'headerEmp.html' %}
+{%  endif %}
+    
+<br/>
+<a href="{{url_for('createCliente')}}" class="btn btn-success">
+    ingresar un nuevo cliente 
+</a>
+<br>
+<br>
+
+
+<table class="table table-light">
+    <thead class="thead-light">
+        <tr>
+            <th>CI</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{cliente[0]}}</td>
+            <td>{{cliente[1]}}</td>
+            <td>{{cliente[2]}}</td>
+            
+            
+            <td> 
+                <a class="btn btn-warning" href="/edithCliente/{{cliente[0]}}">Editar</a> | 
+                <a onclick="return confirm('Esta seguro de borrar?')" class="btn btn-danger" href="/destroyCliente/{{cliente[0]}}">Eliminar</a>
+                 
+            </td>
+            
+        </tr>
+        {% endfor %}
+        
+
+    </tbody>
+</table>
+
+{% include 'footer.html' %}

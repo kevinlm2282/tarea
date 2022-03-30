@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>inicio</title>
+    <style  type="text/css">
+        .bg-company-red {
+        background-color: #4CAF50;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-company-red">
+        <a class="navbar-brand " style="color:#FFFFFF;">Farmacia Santa Clara</a>
+        <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('inicio')}} " style="color:#FFFFFF;">Empleados <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('producto')}}"style="color:#FFFFFF;">Productos <span class="sr-only">(current)</span></a>
+                    <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Item 2</a> -->
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('busc')}}"style="color:#FFFFFF;">Ventas <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('cliente')}}"style="color:#FFFFFF;">Clientes <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('historial')}}"style="color:#FFFFFF;">Historial <span class="sr-only">(current)</span></a>
+                </li>
+              
+            </ul>
+        </div>
+        <span class="btn btn-primary float-right">{{session['nombre']}}</span>
+        <a href="/salir" class="btn btn-danger float-right" role="button" aria-pressed="true">X</a>
+    </nav>
+
+    <div class="container">
+        
+
+    
